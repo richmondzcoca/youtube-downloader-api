@@ -29,6 +29,7 @@ export const initYtdlpwrap = async () => {
             .on('close', (event: any) => {
                 resolve('downloaded successfully');
             });
+            
     
             console.log(ytDlpEventEmitter.ytDlpProcess.pid);
     })
