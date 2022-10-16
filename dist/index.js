@@ -13,22 +13,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const test_1 = require("./test");
 const app = (0, express_1.default)();
 const port = 3000;
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send('TEST ONLY');
 }));
-app.get('/test', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let response;
-    try {
-        response = yield (0, test_1.initYtdlpwrap)();
-    }
-    catch (error) {
-        response = error;
-    }
-    res.json(yield response);
-}));
+// app.get('/test', async (req: Request, res: Response) => {
+//     let response: string | unknown;
+//     try {
+//         response = await initYtdlpwrap();
+//     } catch (error) {
+//         response = error;
+//     }
+//     res.json(await response);
+// })
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
 });
