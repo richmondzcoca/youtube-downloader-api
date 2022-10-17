@@ -27,7 +27,8 @@ export const initYtdlpwrap = async () => {
                 reject(error);
             })
             .on('close', (event: any) => {
-                resolve('downloaded successfully');
+                console.log(__dirname)
+                resolve('downloaded successfully' + __dirname);
             });
             
     
