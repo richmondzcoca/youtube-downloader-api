@@ -10,7 +10,7 @@ export const initYtdlpwrap = async () => {
                 '-f',
                 'best',
                 '-o',
-                'output.mp4',
+                '/app/output.mp4',
             ])
             .on('progress', (progress: any) =>
                 console.log(
