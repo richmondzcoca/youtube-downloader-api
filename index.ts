@@ -18,6 +18,7 @@ app.get('/test', async (req: Request, res: Response) => {
     res.json(await response);
 })
 
+
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
 })
