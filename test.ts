@@ -1,5 +1,6 @@
 const YTDlpWrap = require('yt-dlp-wrap').default;
 const ytDlpWrap = new YTDlpWrap('yt-dlp');
+const fs = require('fs');
 
 export const initYtdlpwrap = async () => {
     return new Promise((resolve, reject) => {
@@ -27,7 +28,8 @@ export const initYtdlpwrap = async () => {
                 reject(error);
             })
             .on('close', (event: any) => {
-                console.log(__dirname)
+                var files = fs.readdirSync('./');
+                console.log("files: ", files);
                 resolve('downloaded successfully' + __dirname);
             });
             
