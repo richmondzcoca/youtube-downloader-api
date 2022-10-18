@@ -1,12 +1,11 @@
 const YTDlpWrap = require('yt-dlp-wrap').default;
 const ytDlpWrap = new YTDlpWrap('yt-dlp');
-const fs = require('fs');
 
-export const initYtdlpwrap = async () => {
+export const initYtdlpwrap = async (videoId: string) => {
     return new Promise((resolve, reject) => {
         const ytDlpEventEmitter = ytDlpWrap
             .exec([
-                'https://www.youtube.com/watch?v=sVPYIRF9RCQ',
+                `https://www.youtube.com/watch?v=${videoId}`,
                 '--no-check-certificate',
                 '--force-overwrites',
                 '-f',
@@ -14,23 +13,22 @@ export const initYtdlpwrap = async () => {
                 '-o',
                 'output.mp4',
             ])
-            .on('progress', (progress: any) =>
-                console.log(
-                    progress.percent,
-                    progress.totalSize,
-                    progress.currentSpeed,
-                    progress.eta
-                )
-            )
-            .on('ytDlpEvent', (eventType: any, eventData: any) =>
-                console.log(eventType, eventData)
-            )
+            // .on('progress', (progress: any) =>
+            //     console.log(
+            //         progress.percent,
+            //         progress.totalSize,
+            //         progress.currentSpeed,
+            //         progress.eta
+            //     )
+            // )
+            // .on('ytDlpEvent', (eventType: any, eventData: any) =>
+            //     console.log(eventType, eventData)
+            // )
             .on('error', (error: any) => {
                 reject(error);
             })
             .on('close', (event: any) => {
-                var files = fs.readdirSync('./');
-                resolve('downloaded successfully: ' + files);
+                resolve('downloaded successfully');
             });
             
     

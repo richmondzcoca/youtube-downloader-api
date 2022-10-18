@@ -9,9 +9,10 @@ app.get('/', async (req: Request, res: Response) => {
 })
 
 app.get('/test', async (req: Request, res: Response) => {
+    const videoId = req.query.v as string;
     let response: string | unknown;
     try {
-        response = await initYtdlpwrap();
+        response = await initYtdlpwrap(videoId);
     } catch (error) {
         response = error;
     }
