@@ -15,7 +15,8 @@ app.get('/test', async (req: Request, res: Response) => {
     } catch (error) {
         response = error;
     }
-    res.json(await response);
+    res.download('output.mp4');
+    // res.json(await response);
 })
 
 

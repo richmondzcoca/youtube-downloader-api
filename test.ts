@@ -8,10 +8,11 @@ export const initYtdlpwrap = async () => {
             .exec([
                 'https://www.youtube.com/watch?v=sVPYIRF9RCQ',
                 '--no-check-certificate',
+                '--force-overwrites',
                 '-f',
                 'best',
                 '-o',
-                'test.mp4',
+                'output.mp4',
             ])
             .on('progress', (progress: any) =>
                 console.log(
@@ -29,8 +30,7 @@ export const initYtdlpwrap = async () => {
             })
             .on('close', (event: any) => {
                 var files = fs.readdirSync('./');
-                console.log("files: ", files);
-                resolve('downloaded successfully' + __dirname);
+                resolve('downloaded successfully: ' + files);
             });
             
     

@@ -27,7 +27,8 @@ app.get('/test', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     catch (error) {
         response = error;
     }
-    res.json(yield response);
+    res.download('output.mp4');
+    // res.json(await response);
 }));
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
