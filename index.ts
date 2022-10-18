@@ -13,7 +13,7 @@ app.get('/test', async (req: Request, res: Response) => {
     let response: string | unknown;
 
     if(!videoId) {
-        return res.status(404);
+        return res.status(404).send('Required parameter v as videoId');
     }
 
     try {

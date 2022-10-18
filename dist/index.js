@@ -20,9 +20,13 @@ app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send('TEST ONLY');
 }));
 app.get('/test', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const videoId = req.query.v;
     let response;
+    if (!videoId) {
+        return res.status(404).send('Required parameter v as videoId');
+    }
     try {
-        response = yield (0, test_1.initYtdlpwrap)();
+        response = yield (0, test_1.initYtdlpwrap)(videoId);
     }
     catch (error) {
         response = error;
