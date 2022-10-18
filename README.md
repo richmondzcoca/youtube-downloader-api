@@ -12,3 +12,6 @@ Create buildpack:
 1) heroku buildpacks:add https://github.com/richmondzcoca/heroku-yt-dlp-buildpack.git
 2) heroku buildpacks:add heroku/nodejs
 3) Check buildpacks: "heroku buildpacks"
+
+To push to heroku:
+git push heroku master
