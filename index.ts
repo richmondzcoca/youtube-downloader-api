@@ -8,7 +8,7 @@ app.get('/', async (req: Request, res: Response) => {
     res.send('TEST ONLY');
 })
 
-app.get('/test', async (req: Request, res: Response) => {
+app.get('/download', async (req: Request, res: Response) => {
     const videoId = req.query.v as string;
     let response: string | unknown;
 
