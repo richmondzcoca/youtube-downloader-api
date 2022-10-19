@@ -17,7 +17,8 @@ let resetDownload = false;
 let ytDlpEventEmitter;
 const reset = () => {
     // ytDlpEventEmitter.ytDlpProcess.killed;
-    process.kill((0, exports.getProcessID)(), 'SIGINT');
+    console.log("process.platform: ", process.platform);
+    process.kill((0, exports.getProcessID)(), 'SIGTERM');
     ytDlpEventEmitter = null;
 };
 exports.reset = reset;
