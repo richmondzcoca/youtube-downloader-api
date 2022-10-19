@@ -18,7 +18,7 @@ let ytDlpEventEmitter;
 const reset = () => {
     // ytDlpEventEmitter.ytDlpProcess.killed;
     console.log("process.platform: ", process.platform);
-    process.kill((0, exports.getProcessID)(), 'SIGTERM');
+    process.kill((0, exports.getProcessID)(), 'SIGINT');
     ytDlpEventEmitter = null;
 };
 exports.reset = reset;
