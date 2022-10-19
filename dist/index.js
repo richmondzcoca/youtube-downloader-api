@@ -19,20 +19,26 @@ const port = process.env.PORT || 3000;
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send('TEST ONLY');
 }));
-app.get('/test', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const videoId = req.query.v;
     let response;
     if (!videoId) {
         return res.status(404).send('Required parameter v as videoId');
     }
+    if ((0, test_1.getProcessID)()) {
+        (0, test_1.reset)();
+    }
     try {
         response = yield (0, test_1.initYtdlpwrap)(videoId);
+        console.log(response);
     }
     catch (error) {
         response = error;
+        res.json(yield response);
     }
-    res.download('output.mp4');
-    // res.json(await response);
+    finally {
+        res.download('output.mp4');
+    }
 }));
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);

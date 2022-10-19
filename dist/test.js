@@ -9,29 +9,52 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initYtdlpwrap = void 0;
+exports.initYtdlpwrap = exports.getProcessID = exports.reset = void 0;
 const YTDlpWrap = require('yt-dlp-wrap').default;
 const ytDlpWrap = new YTDlpWrap('yt-dlp');
+let controller = new AbortController();
+let resetDownload = false;
+let ytDlpEventEmitter;
+const reset = () => {
+    resetDownload = true;
+    // ytDlpEventEmitter.ytDlpProcess.killed;
+    process.kill((0, exports.getProcessID)(), 'SIGINT');
+    ytDlpEventEmitter = null;
+};
+exports.reset = reset;
+const getProcessID = () => {
+    var _a;
+    return (_a = ytDlpEventEmitter === null || ytDlpEventEmitter === void 0 ? void 0 : ytDlpEventEmitter.ytDlpProcess) === null || _a === void 0 ? void 0 : _a.pid;
+};
+exports.getProcessID = getProcessID;
 const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* () {
     return new Promise((resolve, reject) => {
-        const ytDlpEventEmitter = ytDlpWrap
+        ytDlpEventEmitter = ytDlpWrap
             .exec([
             `https://www.youtube.com/watch?v=${videoId}`,
             '--no-check-certificate',
             '--force-overwrites',
+            '--break-on-reject',
+            // '--no-part',
             '-f',
             'best',
             '-o',
             'output.mp4',
-        ])
-            // .on('progress', (progress: any) =>
-            //     console.log(
-            //         progress.percent,
-            //         progress.totalSize,
-            //         progress.currentSpeed,
-            //         progress.eta
-            //     )
+        ], {
+            shell: true,
+            detached: true
+        }, controller.signal)
+            // yt-dlp "https://www.youtube.com/watch?v=71h8MZshGSs" --no-check-certificate --force-overwrites --break-on-reject -o output.mp4 --no-part
+            .on('progress', (progress) => {
+            var _a;
+            // console.log(
+            //     progress.percent,
+            //     progress.totalSize,
+            //     progress.currentSpeed,
+            //     progress.eta
             // )
+            console.log(progress.percent, (_a = ytDlpEventEmitter === null || ytDlpEventEmitter === void 0 ? void 0 : ytDlpEventEmitter.ytDlpProcess) === null || _a === void 0 ? void 0 : _a.pid);
+        })
             // .on('ytDlpEvent', (eventType: any, eventData: any) =>
             //     console.log(eventType, eventData)
             // )
@@ -39,9 +62,9 @@ const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* (
             reject(error);
         })
             .on('close', (event) => {
+            // console.log('downloaded successfully');
             resolve('downloaded successfully');
         });
-        console.log(ytDlpEventEmitter.ytDlpProcess.pid);
     });
 });
 exports.initYtdlpwrap = initYtdlpwrap;

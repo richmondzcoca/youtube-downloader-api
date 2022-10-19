@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from 'express';
-import { initYtdlpwrap } from './test';
+import { getProcessID, initYtdlpwrap, reset } from './test';
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -16,13 +16,20 @@ app.get('/download', async (req: Request, res: Response) => {
         return res.status(404).send('Required parameter v as videoId');
     }
 
+    if(getProcessID()) {
+        reset();
+    }
+    
     try {
         response = await initYtdlpwrap(videoId);
+        console.log(response);
     } catch (error) {
         response = error;
+        res.json(await response);
+    } 
+    finally {
+        res.download('output.mp4');
     }
-    res.download('output.mp4');
-    // res.json(await response);
 })
 
 
