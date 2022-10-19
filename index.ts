@@ -24,14 +24,20 @@ app.get('/download', async (req: Request, res: Response) => {
         response = await initYtdlpwrap(videoId);
         console.log(response);
     } catch (error) {
-        response = error;
-        res.json(await response);
+        return res.status(404).send(error);
     } 
-    finally {
-        res.download('output.mp4');
-    }
+    
+    res.download('output.mp4');
 })
 
+app.get('/reset', async (req: Request, res: Response) => {
+    const processID = getProcessID();
+    if(getProcessID()) {
+        reset();
+    }
+
+    res.send('Download has been reset with ProcessID: ' + processID);
+})
 
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);

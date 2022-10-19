@@ -16,7 +16,6 @@ let controller = new AbortController();
 let resetDownload = false;
 let ytDlpEventEmitter;
 const reset = () => {
-    resetDownload = true;
     // ytDlpEventEmitter.ytDlpProcess.killed;
     process.kill((0, exports.getProcessID)(), 'SIGINT');
     ytDlpEventEmitter = null;
@@ -59,7 +58,7 @@ const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* (
             //     console.log(eventType, eventData)
             // )
             .on('error', (error) => {
-            reject(error);
+            reject(`Error download: ${error}`);
         })
             .on('close', (event) => {
             // console.log('downloaded successfully');

@@ -8,7 +8,6 @@ let resetDownload = false;
 let ytDlpEventEmitter: any;
 
 export const reset = () => {
-    resetDownload = true;
     // ytDlpEventEmitter.ytDlpProcess.killed;
     process.kill(getProcessID(), 'SIGINT');
     ytDlpEventEmitter = null;
@@ -53,7 +52,7 @@ export const initYtdlpwrap = async (videoId: string) => {
             //     console.log(eventType, eventData)
             // )
             .on('error', (error: any) => {
-                reject(error);
+                reject(`Error download: ${error}`);
             })
             .on('close', (event: any) => {
                 // console.log('downloaded successfully');
