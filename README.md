@@ -1,10 +1,10 @@
 Create app on heroku:
-$ cd my-project/
-$ git init
-$ heroku git:remote -a yourapp
-$ git add .
-$ git commit -am "make it better"
-$ git push heroku master
+1) cd my-project/
+2) git init
+3) heroku git:remote -a yourapp
+4) git add .
+5) git commit -am "make it better"
+6) git push heroku master
 
 To use 'yt-dlp':
 
