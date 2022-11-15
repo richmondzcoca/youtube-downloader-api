@@ -9,7 +9,6 @@ app.get('/', async (req: Request, res: Response) => {
 })
 
 app.get('/download', async (req: Request, res: Response) => {
-    console.log('Start downloading...');
     const videoId = req.query.v as string;
     let response: string | unknown;
 

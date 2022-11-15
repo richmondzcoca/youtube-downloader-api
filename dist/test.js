@@ -46,14 +46,13 @@ const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* (
         }, controller.signal)
             // yt-dlp "https://www.youtube.com/watch?v=71h8MZshGSs" --no-check-certificate --force-overwrites --break-on-reject -o output.mp4 --no-part
             .on('progress', (progress) => {
-            var _a;
             // console.log(
             //     progress.percent,
             //     progress.totalSize,
             //     progress.currentSpeed,
             //     progress.eta
             // )
-            console.log(progress.percent, (_a = ytDlpEventEmitter === null || ytDlpEventEmitter === void 0 ? void 0 : ytDlpEventEmitter.ytDlpProcess) === null || _a === void 0 ? void 0 : _a.pid);
+            // console.log(progress.percent, ytDlpEventEmitter?.ytDlpProcess?.pid);
         })
             // .on('ytDlpEvent', (eventType: any, eventData: any) =>
             //     console.log(eventType, eventData)

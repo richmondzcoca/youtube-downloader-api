@@ -47,7 +47,7 @@ export const initYtdlpwrap = async (videoId: string) => {
                 //     progress.currentSpeed,
                 //     progress.eta
                 // )
-                console.log(progress.percent, ytDlpEventEmitter?.ytDlpProcess?.pid);
+                // console.log(progress.percent, ytDlpEventEmitter?.ytDlpProcess?.pid);
             })
             // .on('ytDlpEvent', (eventType: any, eventData: any) =>
             //     console.log(eventType, eventData)
