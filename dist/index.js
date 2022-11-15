@@ -20,6 +20,7 @@ app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send('TEST ONLY');
 }));
 app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('iamhere');
     const videoId = req.query.v;
     let response;
     if (!videoId) {
