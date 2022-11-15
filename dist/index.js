@@ -30,7 +30,7 @@ app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
     try {
         response = yield (0, test_1.initYtdlpwrap)(videoId);
-        console.log(response);
+        // console.log(response);
     }
     catch (error) {
         return res.status(404).send(error);

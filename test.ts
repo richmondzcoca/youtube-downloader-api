@@ -3,13 +3,11 @@ const ytDlpWrap = new YTDlpWrap('yt-dlp');
 
 let controller = new AbortController();
 
-let resetDownload = false;
-
 let ytDlpEventEmitter: any;
 
 export const reset = () => {
     // ytDlpEventEmitter.ytDlpProcess.killed;
-    console.log("process.platform: ", process.platform);
+    // console.log("process.platform: ", process.platform);
     process.kill(getProcessID(), 'SIGINT');
     ytDlpEventEmitter = null;
 }

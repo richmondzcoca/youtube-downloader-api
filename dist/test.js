@@ -13,11 +13,10 @@ exports.initYtdlpwrap = exports.getProcessID = exports.reset = void 0;
 const YTDlpWrap = require('yt-dlp-wrap').default;
 const ytDlpWrap = new YTDlpWrap('yt-dlp');
 let controller = new AbortController();
-let resetDownload = false;
 let ytDlpEventEmitter;
 const reset = () => {
     // ytDlpEventEmitter.ytDlpProcess.killed;
-    console.log("process.platform: ", process.platform);
+    // console.log("process.platform: ", process.platform);
     process.kill((0, exports.getProcessID)(), 'SIGINT');
     ytDlpEventEmitter = null;
 };
