@@ -1,7 +1,7 @@
 const YTDlpWrap = require('yt-dlp-wrap').default;
 const ytDlpWrap = new YTDlpWrap('yt-dlp');
 
-let controller = new AbortController();
+// let controller = new AbortController();
 
 let ytDlpEventEmitter: any;
 
@@ -32,11 +32,11 @@ export const initYtdlpwrap = async (videoId: string) => {
                     `../storage/downloads/YoutubeNoAds/videos/${videoId}.mp4`,
                     // 'output.mp4'
                 ],
-                {
-                    shell: true,
-                    detached: true
-                },
-                controller.signal
+                // {
+                //     shell: true,
+                //     detached: true
+                // },
+                // controller.signal
             )
             // yt-dlp "https://www.youtube.com/watch?v=71h8MZshGSs" --no-check-certificate --force-overwrites --break-on-reject -o output.mp4 --no-part
             .on('progress', (progress: any) => {

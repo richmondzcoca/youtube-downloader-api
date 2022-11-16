@@ -16,9 +16,9 @@ app.get('/download', async (req: Request, res: Response) => {
         return res.status(404).send('Required parameter v as videoId');
     }
 
-    if(getProcessID()) {
-        reset();
-    }
+    // if(getProcessID()) {
+    //     reset();
+    // }
     
     try {
         response = await initYtdlpwrap(videoId);

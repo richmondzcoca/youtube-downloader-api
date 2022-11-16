@@ -25,9 +25,9 @@ app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     if (!videoId) {
         return res.status(404).send('Required parameter v as videoId');
     }
-    if ((0, test_1.getProcessID)()) {
-        (0, test_1.reset)();
-    }
+    // if(getProcessID()) {
+    //     reset();
+    // }
     try {
         response = yield (0, test_1.initYtdlpwrap)(videoId);
         // console.log(response);

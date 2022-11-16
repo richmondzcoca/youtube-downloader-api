@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.initYtdlpwrap = exports.getProcessID = exports.reset = void 0;
 const YTDlpWrap = require('yt-dlp-wrap').default;
 const ytDlpWrap = new YTDlpWrap('yt-dlp');
-let controller = new AbortController();
+// let controller = new AbortController();
 let ytDlpEventEmitter;
 const reset = () => {
     // ytDlpEventEmitter.ytDlpProcess.killed;
@@ -40,10 +40,7 @@ const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* (
             '-o',
             `../storage/downloads/YoutubeNoAds/videos/${videoId}.mp4`,
             // 'output.mp4'
-        ], {
-            shell: true,
-            detached: true
-        }, controller.signal)
+        ])
             // yt-dlp "https://www.youtube.com/watch?v=71h8MZshGSs" --no-check-certificate --force-overwrites --break-on-reject -o output.mp4 --no-part
             .on('progress', (progress) => {
             var _a;
