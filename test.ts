@@ -56,8 +56,6 @@ export const initYtdlpwrap = async (videoId: string) => {
             })
             .on('close', async (event: any) => {
                 console.log('downloaded successfully');
-
-                ytDlpEventEmitter = null;
                 resolve('downloaded successfully');
             });
     })

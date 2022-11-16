@@ -10,11 +10,14 @@ app.get('/', async (req: Request, res: Response) => {
 
 app.get('/download', async (req: Request, res: Response) => {
     const videoId = req.query.v as string;
+    const title = req.query.title;
     let response: string | unknown;
 
     if(!videoId) {
         return res.status(404).send('Required parameter v as videoId');
     }
+
+    console.log(`Downloading: ${title}`);
 
     // if(getProcessID()) {
     //     reset();

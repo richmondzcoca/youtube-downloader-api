@@ -60,7 +60,6 @@ const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* (
         })
             .on('close', (event) => __awaiter(void 0, void 0, void 0, function* () {
             console.log('downloaded successfully');
-            ytDlpEventEmitter = null;
             resolve('downloaded successfully');
         }));
     });
