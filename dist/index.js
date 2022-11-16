@@ -21,6 +21,7 @@ app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 }));
 app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const videoId = req.query.v;
+    const title = req.query.title;
     let response;
     if (!videoId) {
         return res.status(404).send('Required parameter v as videoId');
@@ -35,7 +36,8 @@ app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     catch (error) {
         return res.status(404).send(error);
     }
-    res.download('output.mp4');
+    // res.download('output.mp4');
+    res.download(`${title}.mp4`);
 }));
 app.get('/reset', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const processID = (0, test_1.getProcessID)();

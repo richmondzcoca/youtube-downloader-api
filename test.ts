@@ -28,8 +28,8 @@ export const initYtdlpwrap = async (videoId: string) => {
                     // '--no-part',
                     '-f',
                     'best',
-                    '-o',
-                    'output.mp4',
+                    // '-o',
+                    // 'output.mp4',
                 ],
                 {
                     shell: true,
@@ -45,7 +45,7 @@ export const initYtdlpwrap = async (videoId: string) => {
                 //     progress.currentSpeed,
                 //     progress.eta
                 // )
-                // console.log(progress.percent, ytDlpEventEmitter?.ytDlpProcess?.pid);
+                console.log(progress.percent, ytDlpEventEmitter?.ytDlpProcess?.pid);
             })
             // .on('ytDlpEvent', (eventType: any, eventData: any) =>
             //     console.log(eventType, eventData)
@@ -53,8 +53,9 @@ export const initYtdlpwrap = async (videoId: string) => {
             .on('error', (error: any) => {
                 reject(`Error download: ${error}`);
             })
-            .on('close', (event: any) => {
-                // console.log('downloaded successfully');
+            .on('close', async (event: any) => {
+                console.log('downloaded successfully');
+
                 ytDlpEventEmitter = null;
                 resolve('downloaded successfully');
             });
