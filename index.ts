@@ -29,7 +29,9 @@ app.get('/download', async (req: Request, res: Response) => {
     } 
     
     // res.download('output.mp4');
-    res.download(`${title}.mp4`);
+    res.json({
+        status: 'success'
+    })
 })
 
 app.get('/reset', async (req: Request, res: Response) => {

@@ -37,7 +37,9 @@ app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* (
         return res.status(404).send(error);
     }
     // res.download('output.mp4');
-    res.download(`${title}.mp4`);
+    res.json({
+        status: 'success'
+    });
 }));
 app.get('/reset', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const processID = (0, test_1.getProcessID)();

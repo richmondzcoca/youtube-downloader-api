@@ -29,7 +29,7 @@ export const initYtdlpwrap = async (videoId: string) => {
                     '-f',
                     'best',
                     '-o',
-                    '../storage/downloads/YoutubeNoAds/test.mp4',
+                    `../storage/downloads/YoutubeNoAds/videos/${videoId}.mp4`,
                     // 'output.mp4'
                 ],
                 {

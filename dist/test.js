@@ -38,7 +38,7 @@ const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* (
             '-f',
             'best',
             '-o',
-            '../storage/downloads/YoutubeNoAds/test.mp4',
+            `../storage/downloads/YoutubeNoAds/videos/${videoId}.mp4`,
             // 'output.mp4'
         ], {
             shell: true,
