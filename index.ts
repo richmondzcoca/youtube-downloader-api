@@ -10,7 +10,6 @@ app.get('/', async (req: Request, res: Response) => {
 
 app.get('/download', async (req: Request, res: Response) => {
     const videoId = req.query.v as string;
-    const title = req.query.title;
     let response: string | unknown;
 
     if(!videoId) {
@@ -28,7 +27,6 @@ app.get('/download', async (req: Request, res: Response) => {
         return res.status(404).send(error);
     } 
     
-    // res.download('output.mp4');
     res.json({
         status: 'success'
     })
