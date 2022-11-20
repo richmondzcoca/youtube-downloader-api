@@ -17,6 +17,7 @@ const test_1 = require("./test");
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(__dirname);
     res.send('TEST ONLY');
 }));
 app.get('/download', (req, res) => __awaiter(void 0, void 0, void 0, function* () {

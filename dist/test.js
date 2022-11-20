@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initYtdlpwrap = exports.getProcessID = exports.reset = void 0;
 const YTDlpWrap = require('yt-dlp-wrap').default;
-const ytDlpWrap = new YTDlpWrap('./binary/yt-dlp');
+const ytDlpWrap = new YTDlpWrap(`${__dirname}/../binary/yt-dlp`);
 // let controller = new AbortController();
 let ytDlpEventEmitter;
 const reset = () => {

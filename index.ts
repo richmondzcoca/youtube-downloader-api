@@ -5,6 +5,7 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', async (req: Request, res: Response) => {
+    console.log(__dirname);
     res.send('TEST ONLY');
 })
 
