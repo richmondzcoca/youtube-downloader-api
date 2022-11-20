@@ -1,5 +1,5 @@
 const YTDlpWrap = require('yt-dlp-wrap').default;
-const ytDlpWrap = new YTDlpWrap('yt-dlp');
+const ytDlpWrap = new YTDlpWrap('./binary/yt-dlp');
 
 // let controller = new AbortController();
 

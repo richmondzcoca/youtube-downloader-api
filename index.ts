@@ -25,7 +25,7 @@ app.get('/download', async (req: Request, res: Response) => {
     
     try {
         response = await initYtdlpwrap(videoId);
-        // console.log(response);
+        console.log(response);
     } catch (error) {
         return res.status(404).send(error);
     } 
