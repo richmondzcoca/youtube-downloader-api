@@ -38,7 +38,7 @@ const initYtdlpwrap = (videoId) => __awaiter(void 0, void 0, void 0, function* (
             '-f',
             'best',
             '-o',
-            `../storage/downloads/YoutubeNoAds/videos/${videoId}.mp4`,
+            `${__dirname}/../../storage/downloads/YoutubeNoAds/videos/${videoId}.mp4`,
             // 'output.mp4'
         ])
             // yt-dlp "https://www.youtube.com/watch?v=71h8MZshGSs" --no-check-certificate --force-overwrites --break-on-reject -o output.mp4 --no-part
